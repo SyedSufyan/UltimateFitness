@@ -24,6 +24,11 @@
         <activity
             android:name=".FormActivity"
             android:label="@string/title_activity_form" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
