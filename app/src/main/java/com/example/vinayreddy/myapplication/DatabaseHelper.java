@@ -59,7 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
-        db.execSQL(HISTOGRAM_TABLE_NAME);
+        db.execSQL(HISTOGRAM_TABLE_CREATE);
         this.db = db;
     }
 
