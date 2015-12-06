@@ -63,6 +63,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.db = db;
     }
 
+    public void insertInHistogram(HistogramObject histogramObj)
+    {
+
+    }
+
     public void insertContact(Contact c){
 
         db = this.getWritableDatabase();
