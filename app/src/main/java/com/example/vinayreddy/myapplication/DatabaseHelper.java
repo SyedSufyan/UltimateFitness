@@ -14,17 +14,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final int DATABASE_VERSION = 2;
-    private static final String DATABASE_NAME = "contacts.db";
+    private static final String DATABASE_NAME = "fitness.db";
     private static final String TABLE_NAME = "contacts";
+    private static final String HISTOGRAM_TABLE_NAME = "histogram";
     private static final String COLUMN_ID = "id";
+    private static final String COLUMN_UNAME = "uname";
+
+    /* Columns for login table */
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_UNAME = "uname";
     private static final String COLUMN_PASS = "pass";
 
-
-    private static final String TABLE_CREATE = "create table contacts (id integer primary key not null, " +
+    private static final String TABLE_CREATE = "create table fitness.db (id integer primary key not null, " +
             "name text not null, email text not null, uname text not null, pass text not null);";
+
+    /* Column for histogram table */
+    private static final String COLUMN_DATE = "date";
+    private static final String COLUMN_WEIGHT = "weight";
+    private static final String COLUMN_HEIGHT = "height";
+    private static final String COLUMN_AGE = "age";
+    private static final String COLUMN_GENDER= "gender";
+    private static final String COLUMN_WAIST = "waist";
+    private static final String COLUMN_WRIST = "wrist";
+    private static final String COLUMN_FOREARM = "forearm";
+
+    private static final String HISTOGRAM_TABLE_CREATE =
+            "create table " + HISTOGRAM_TABLE_NAME + " ( " +
+                    COLUMN_ID + " integer primary key not null, " +
+                    COLUMN_DATE + " name text not null, " +
+                    COLUMN_HEIGHT + " name text not null, " +
+                    COLUMN_AGE + " name text not null, " +
+                    COLUMN_GENDER + " name text not null, " +
+                    COLUMN_WEIGHT + " name text not null, " +
+                    COLUMN_WAIST + " name text not null, " +
+                    COLUMN_WRIST + " name text not null, " +
+                    COLUMN_FOREARM + " name text not null);";
 
     private SQLiteDatabase db;
 
@@ -35,6 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
+        db.execSQL(HISTOGRAM_TABLE_NAME);
         this.db = db;
     }
 
