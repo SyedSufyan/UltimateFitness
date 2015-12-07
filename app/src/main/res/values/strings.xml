@@ -7,4 +7,5 @@
     <string name="button_histogram">Histogram</string>
     <string name="button_stopwatch">Stop Watch</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_result">resultActivity</string>
 </resources>
