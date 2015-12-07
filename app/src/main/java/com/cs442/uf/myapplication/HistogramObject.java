@@ -30,44 +30,10 @@ public class HistogramObject {
     private double rbmr;
     private double rbfp;
 
-    public double getHip() {
-        return hip;
-    }
-
-    public void setHip(double hip) {
-        this.hip = hip;
-    }
-
-    public double getRbmi() {
-        return rbmi;
-    }
-
-    public void setRbmi(double rbmi) {
-        this.rbmi = rbmi;
-    }
-
-    public double getRbmr() {
-        return rbmr;
-    }
-
-    public void setRbmr(double rbmr) {
-        this.rbmr = rbmr;
-    }
-
-    public double getRbfp() {
-        return rbfp;
-    }
-
-    public void setRbfp(double rbfp) {
-        this.rbfp = rbfp;
-    }
-
-
-
     public HistogramObject() {
     }
 
-    public HistogramObject(String userName, Date date, double weight, double height, int age, char gender, double waist, double wrist, double forearm) {
+    public HistogramObject(String userName, Date date, double weight, double height, int age, char gender, double waist, double wrist, double hip, double forearm, double rbmi, double rbmr, double rbfp) {
         this.userName = userName;
         this.date = date;
         this.weight = weight;
@@ -76,7 +42,12 @@ public class HistogramObject {
         this.gender = gender;
         this.waist = waist;
         this.wrist = wrist;
+        this.hip=hip;
         this.forearm = forearm;
+        this.rbmi=rbmi;
+        this.rbmr=rbmr;
+        this.rbfp=rbfp;
+
     }
 
     public Date getDate() {
@@ -135,6 +106,15 @@ public class HistogramObject {
         this.wrist = wrist;
     }
 
+    public double getHip() {
+        return hip;
+    }
+
+    public void setHip(double hip) {
+        this.hip = hip;
+    }
+
+
     public double getForearm() {
         return forearm;
     }
@@ -142,4 +122,29 @@ public class HistogramObject {
     public void setForearm(double forearm) {
         this.forearm = forearm;
     }
+
+    public double getRbmi() {
+        return rbmi;
+    }
+
+    public void setRbmi(double rbmi) {
+        this.rbmi = rbmi;
+    }
+
+    public double getRbmr() {
+        return rbmr;
+    }
+
+    public void setRbmr(double rbmr) {
+        this.rbmr = rbmr;
+    }
+
+    public double getRbfp() {
+        return rbfp;
+    }
+
+    public void setRbfp(double rbfp) {
+        this.rbfp = rbfp;
+    }
+
 }

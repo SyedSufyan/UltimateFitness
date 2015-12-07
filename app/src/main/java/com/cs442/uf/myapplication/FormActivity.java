@@ -44,6 +44,9 @@ public class FormActivity extends AppCompatActivity {
                 EditText forearmField = (EditText) findViewById(R.id.eForearmC);
                 String forearmS = heightField.getText().toString();
                 int forearm = Integer.parseInt(forearmS);
+                //BMI Calc
+                double bmi = (weight/2.20462)/((height/100)^2);
+
 
                 Intent result = new Intent(FormActivity.this,resultActivity.class);
                 startActivity(result);
