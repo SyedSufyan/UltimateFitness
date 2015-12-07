@@ -24,11 +24,19 @@ public class HistogramObject {
     private int gender;
     private double waist;
     private double wrist;
+    private double hip;
     private double forearm;
     private double rbmi;
     private double rbmr;
     private double rbfp;
 
+    public double getHip() {
+        return hip;
+    }
+
+    public void setHip(double hip) {
+        this.hip = hip;
+    }
 
     public double getRbmi() {
         return rbmi;
