@@ -33,6 +33,7 @@ public class HistogramObject {
     public HistogramObject() {
     }
 
+
     public HistogramObject(String userName, Date date, double weight, double height, int age, char gender, double waist, double wrist, double hip, double forearm, double rbmi, double rbmr, double rbfp) {
         this.userName = userName;
         this.date = date;
