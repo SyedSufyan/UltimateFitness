@@ -91,11 +91,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_AGE, histogramObj.getAge());
         values.put(COLUMN_WEIGHT, histogramObj.getWeight());
         values.put(COLUMN_HEIGHT, histogramObj.getHeight());
-        values.put(COLUMN_GENDER, Character.toString(histogramObj.getGender()));
+        values.put(COLUMN_GENDER, histogramObj.getGender());
         values.put(COLUMN_WAIST, histogramObj.getWaist());
         values.put(COLUMN_WRIST, histogramObj.getWrist());
         values.put(COLUMN_FOREARM, histogramObj.getForearm());
 
+        System.out.println ("++Insert " +  values);
         db.insert(HISTOGRAM_TABLE_NAME, null, values);
         db.close();
 
@@ -128,7 +129,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             results.concat("waist -> " + cursor.getDouble(7));
             results.concat("wrist -> " + cursor.getDouble(8));
             results.concat("forearm -> " + cursor.getDouble(9));*/
-            System.out.println("*** Count: " + cursor.getColumnCount() + "; content -> " + list);
+            System.out.println("*** Count: " + cursor.getColumnCount() + "; content -> " +
+                    cursor.getString(0) + "; " +
+                    cursor.getString(1) + "; " +
+                    cursor.getString(2) + "; " +
+                    cursor.getString(3) + "; " +
+                    cursor.getString(4) + "; " );
+
             cursor.moveToNext();
             /*HistogramObject histogramAux =
             Comment comment = cursorToComment(cursor);
