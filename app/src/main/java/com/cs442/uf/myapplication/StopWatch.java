@@ -8,6 +8,6 @@ public class StopWatch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stop_watch);
+        setContentView(R.layout.activity_stopwatch);
     }
 }
