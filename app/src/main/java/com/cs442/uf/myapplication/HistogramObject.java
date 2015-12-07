@@ -8,6 +8,15 @@ import java.util.Date;
 public class HistogramObject {
 
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    private String userName;
     private Date date;
     private double weight;
     private double height;
@@ -21,7 +30,8 @@ public class HistogramObject {
     public HistogramObject() {
     }
 
-    public HistogramObject(Date date, double weight, double height, int age, char gender, double waist, double wrist, double forearm) {
+    public HistogramObject(String userName, Date date, double weight, double height, int age, char gender, double waist, double wrist, double forearm) {
+        this.userName = userName;
         this.date = date;
         this.weight = weight;
         this.height = height;

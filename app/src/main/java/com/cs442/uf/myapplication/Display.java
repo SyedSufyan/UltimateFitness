@@ -72,7 +72,7 @@ public class Display extends Activity {
                 toast.show();
                 //Date date, double weight, double height, int age, char gender, double waist, double wrist, double forearm
 
-                HistogramObject histogramObj = new HistogramObject(new Date(), 80.0, 150.0, 20, 'M', 23.0, 24.0, 18.0);
+                HistogramObject histogramObj = new HistogramObject("a", new Date(), 80.0, 150.0, 20, 'M', 23.0, 24.0, 18.0);
                 db.insertInHistogram(histogramObj);
 
             }
@@ -81,6 +81,8 @@ public class Display extends Activity {
         final Button buttonTestGet= (Button) findViewById(R.id.button_testGet);
         buttonTestGet.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                db.getAll("a");
 
             }
         });
