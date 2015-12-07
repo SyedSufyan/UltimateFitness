@@ -1,5 +1,6 @@
 package com.cs442.uf.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,8 @@ public class FormActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
+
+        DatabaseHelper databaseHelper;
 
         Button bSubform = (Button) findViewById(R.id.bSubform);
         bSubform.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +44,9 @@ public class FormActivity extends AppCompatActivity {
                 EditText forearmField = (EditText) findViewById(R.id.eForearmC);
                 String forearmS = heightField.getText().toString();
                 int forearm = Integer.parseInt(forearmS);
+
+                Intent result = new Intent(FormActivity.this,resultActivity.class);
+                startActivity(result);
 
             }
             });
