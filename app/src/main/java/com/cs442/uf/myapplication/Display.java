@@ -41,7 +41,7 @@ public class Display extends Activity {
         final Button buttonStopWatch = (Button) findViewById(R.id.button_stopwatch);
         buttonStopWatch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),Stopwatch.class);
+                Intent intent = new Intent(v.getContext(),StopWatch.class);
                 startActivity(intent);
             }
         });
