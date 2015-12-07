@@ -7,15 +7,6 @@ import java.util.Date;
 
 public class Histogram extends AppCompatActivity {
 
-    private String userName;
-    private Date date;
-    private Double height;
-    private Double weight;
-    private int age;
-    private char gender;
-    private double waist;
-    private double wrist;
-    private double forearm;
 
 
 
