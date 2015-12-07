@@ -21,10 +21,39 @@ public class HistogramObject {
     private double weight;
     private double height;
     private int age;
-    private char gender;
+    private int gender;
     private double waist;
     private double wrist;
     private double forearm;
+    private double rbmi;
+    private double rbmr;
+    private double rbfp;
+
+
+    public double getRbmi() {
+        return rbmi;
+    }
+
+    public void setRbmi(double rbmi) {
+        this.rbmi = rbmi;
+    }
+
+    public double getRbmr() {
+        return rbmr;
+    }
+
+    public void setRbmr(double rbmr) {
+        this.rbmr = rbmr;
+    }
+
+    public double getRbfp() {
+        return rbfp;
+    }
+
+    public void setRbfp(double rbfp) {
+        this.rbfp = rbfp;
+    }
+
 
 
     public HistogramObject() {
@@ -74,11 +103,11 @@ public class HistogramObject {
         this.age = age;
     }
 
-    public char getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
