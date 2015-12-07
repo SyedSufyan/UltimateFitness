@@ -43,7 +43,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_GENDER= "gender";
     private static final String COLUMN_WAIST = "waist";
     private static final String COLUMN_WRIST = "wrist";
+    private static final String COLUMN_HIP = "hip";
     private static final String COLUMN_FOREARM = "forearm";
+    private static final String COLUMN_RBMI = "rbmi";
+    private static final String COLUMN_RBMR = "rbmr";
+    private static final String COLUMN_RBFP = "rbfp";
+
 
     private static final String HISTOGRAM_TABLE_CREATE =
             "create table " + HISTOGRAM_TABLE_NAME + " ( " +
@@ -56,6 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_WEIGHT + " name text not null, " +
                     COLUMN_WAIST + " name text not null, " +
                     COLUMN_WRIST + " name text not null, " +
+                    COLUMN_HIP + " name text not null," +
                     COLUMN_FOREARM + " name text not null);";
 
 
@@ -91,10 +97,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_AGE, histogramObj.getAge());
         values.put(COLUMN_WEIGHT, histogramObj.getWeight());
         values.put(COLUMN_HEIGHT, histogramObj.getHeight());
-        values.put(COLUMN_GENDER, Character.toString(histogramObj.getGender()));
+        values.put(COLUMN_GENDER, histogramObj.getGender());
         values.put(COLUMN_WAIST, histogramObj.getWaist());
         values.put(COLUMN_WRIST, histogramObj.getWrist());
+        values.put(COLUMN_HIP, histogramObj.getHip());
         values.put(COLUMN_FOREARM, histogramObj.getForearm());
+        values.put(COLUMN_RBMI,histogramObj.getRbmi());
+        values.put(COLUMN_RBMR,histogramObj.getRbmr());
+        values.put(COLUMN_RBFP,histogramObj.getRbfp());
 
         db.insert(HISTOGRAM_TABLE_NAME, null, values);
         db.close();
