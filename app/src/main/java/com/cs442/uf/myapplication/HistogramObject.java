@@ -17,6 +17,10 @@ public class HistogramObject {
     private double wrist;
     private double forearm;
 
+
+    public HistogramObject() {
+    }
+
     public HistogramObject(Date date, double weight, double height, int age, char gender, double waist, double wrist, double forearm) {
         this.date = date;
         this.weight = weight;
