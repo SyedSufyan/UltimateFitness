@@ -92,7 +92,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_UNAME, histogramObj.getUserName());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(histogramObj.getDate());
-
         values.put(COLUMN_DATE, date);
         values.put(COLUMN_AGE, histogramObj.getAge());
         values.put(COLUMN_WEIGHT, histogramObj.getWeight());
