@@ -256,6 +256,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             list.add(aux);
 
+
             System.out.println("*** Count: " + cursor.getColumnCount() + "; content -> " +
                      "id: " + cursor.getString(0) + "; " +
                      "userName: " +cursor.getString(1) + "; " +
