@@ -11,6 +11,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FormActivity extends AppCompatActivity {
 
     private static RadioGroup radioGender;
@@ -21,7 +25,7 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
-        DatabaseHelper databaseHelper;
+        final DatabaseHelper databaseHelper;
 
         Button bSubform = (Button) findViewById(R.id.bSubform);
         bSubform.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +94,14 @@ public class FormActivity extends AppCompatActivity {
                     bfp = (bodyfatweight * 100) / weight;
                 }
 
+                Contact contact=new Contact();
+                DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+                Date dateobj = new Date();
 
+                //make a data object
+
+                //insert the data object to the database
+                //databaseHelper.insertInHistogram();
 
 
                 Intent result = new Intent(FormActivity.this,resultActivity.class);
