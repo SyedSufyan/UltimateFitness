@@ -45,7 +45,7 @@ public class FormActivity extends AppCompatActivity {
                 Double weight = Double.parseDouble(weightS);
                 EditText ageField = (EditText) findViewById(R.id.eAge);
                 String ageS = ageField.getText().toString();
-                Double age = Double.parseDouble(ageS);
+                int age =Integer.parseInt(ageS);
                 EditText waistField = (EditText) findViewById(R.id.eWaistC);
                 String waistS = waistField.getText().toString();
                 Double waist = Double.parseDouble(waistS);
@@ -99,9 +99,9 @@ public class FormActivity extends AppCompatActivity {
                 Date dateobj = new Date();
 
                 //make a data object
-
+                HistogramObject obj = new HistogramObject(contact.getName(),dateobj,weight,height,age,GenderChoice,waist,wrist,hip,forearm,bmi,bmr,bfp);
                 //insert the data object to the database
-                //databaseHelper.insertInHistogram();
+                //databaseHelper.insertInHistogram(obj);
 
 
                 Intent result = new Intent(FormActivity.this,resultActivity.class);
