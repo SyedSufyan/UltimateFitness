@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by vinay reddy on 11/23/2015.
@@ -21,6 +22,8 @@ public class Display extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+       // db.onUpgrade(db, 2, 3);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display);
 
@@ -71,8 +74,9 @@ public class Display extends Activity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
                 //Date date, double weight, double height, int age, char gender, double waist, double wrist, double forearm
-
-                HistogramObject histogramObj = new HistogramObject("a", new Date(), 80.0, 150.0, 20, 'M', 23.0, 24.0, 18.0);
+                //String userName, Date date, double weight, double height, int age, char gender, double waist, double wrist, double hip, double forearm, double rbmi, double rbmr, double rbfp) {
+                //public HistogramObject(String userName, Date date, double weight, double height, int age, String gender, double waist, double wrist, double hip, double forearm, double rbmi, double rbmr, double rbfp) {
+                    HistogramObject histogramObj = new HistogramObject("a", new Date(), 80.0, 150.0, 20, "Male", 23.0, 24.0, 18.0, 12.0, 21.1, 22.1, 23.1);
                 db.insertInHistogram(histogramObj);
 
             }
@@ -81,9 +85,9 @@ public class Display extends Activity {
         final Button buttonTestGet= (Button) findViewById(R.id.button_testGet);
         buttonTestGet.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                db.getAll("a");
-
+                List<HistogramObject> list = null;
+                list = db.getAll("a");
+                System.out.println("Done");
             }
         });
     }

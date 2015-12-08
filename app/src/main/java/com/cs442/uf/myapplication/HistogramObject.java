@@ -21,7 +21,7 @@ public class HistogramObject {
     private double weight;
     private double height;
     private int age;
-    private int gender;
+    private String gender;
     private double waist;
     private double wrist;
     private double hip;
@@ -34,7 +34,7 @@ public class HistogramObject {
     }
 
 
-    public HistogramObject(String userName, Date date, double weight, double height, int age, char gender, double waist, double wrist, double hip, double forearm, double rbmi, double rbmr, double rbfp) {
+    public HistogramObject(String userName, Date date, double weight, double height, int age, String gender, double waist, double wrist, double hip, double forearm, double rbmi, double rbmr, double rbfp) {
         this.userName = userName;
         this.date = date;
         this.weight = weight;
@@ -48,7 +48,6 @@ public class HistogramObject {
         this.rbmi=rbmi;
         this.rbmr=rbmr;
         this.rbfp=rbfp;
-
     }
 
     public Date getDate() {
@@ -83,11 +82,11 @@ public class HistogramObject {
         this.age = age;
     }
 
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

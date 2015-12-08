@@ -20,7 +20,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "fitness.db";
     private static final String TABLE_NAME = "contacts";
     private static final String HISTOGRAM_TABLE_NAME = "histogram";
@@ -62,10 +62,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_WAIST + " name text not null, " +
                     COLUMN_WRIST + " name text not null, " +
                     COLUMN_HIP + " name text not null," +
-                    COLUMN_FOREARM + " name text not null);";
+                    COLUMN_FOREARM + " name text not null," +
+                    COLUMN_RBMI + " name text not null," +
+                    COLUMN_RBMR + " name text not null," +
+                    COLUMN_RBFP + " name text not null);";
 
 
     private SQLiteDatabase db;
+
 
     public DatabaseHelper(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
@@ -81,6 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void insertInHistogram(HistogramObject histogramObj)
     {
         db = this.getWritableDatabase();
+
         ContentValues values = new ContentValues();
 
         String query = "select * from " + HISTOGRAM_TABLE_NAME;
@@ -111,25 +116,100 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public HistogramObject getAll(String userName)
+    public List<HistogramObject> getAll(String userName)
     {
-        List<HistogramObject> comments = new ArrayList<HistogramObject>();
+        List <HistogramObject> list = null;
+        //List<HistogramObject> comments = new ArrayList<HistogramObject>();
         db = this.getReadableDatabase();
-
+        /*String[] projection = {
+                COLUMN_ID,
+                COLUMN_UNAME,
+                COLUMN_DATE,
+                COLUMN_HEIGHT,
+                COLUMN_AGE,
+                COLUMN_GENDER,
+                COLUMN_WEIGHT,
+                COLUMN_WAIST,
+                COLUMN_WRIST,
+                COLUMN_HIP,
+                COLUMN_FOREARM,
+                COLUMN_RBMI,
+                COLUMN_RBMR,
+                COLUMN_RBFP
+        };
+        Cursor cursor = db.query(HISTOGRAM_TABLE_NAME, projection_)*/
         Cursor cursor = db.rawQuery("SELECT * FROM " + HISTOGRAM_TABLE_NAME + " WHERE " + COLUMN_UNAME + " = '"+userName+"'", null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
 
-            List <String> list = null;
+
+
+            HistogramObject aux = new HistogramObject();
+
+
            /* String name = cursor.getString(cursor
                     .getColumnIndex(countyname));
 
             list.add(name);*/
+           /* COLUMN_UNAME,
+                    COLUMN_DATE,
+                    COLUMN_HEIGHT,
+                    COLUMN_AGE,
+                    COLUMN_GENDER,
+                    COLUMN_WEIGHT,
+                    COLUMN_WAIST,
+                    COLUMN_WRIST,
+                    COLUMN_HIP,
+                    COLUMN_FOREARM,
+                    COLUMN_RBMI,
+                    COLUMN_RBMR,
+                    COLUMN_RBFP*/
 
             /*String results = "* ";
-            results.concat("id -> " + cursor.getLong(0));
-            results.concat("userName -> " + cursor.getString(1));
+            results.concat("id -> " + cursor.getString(
+                    cursor.getColumnIndexOrThrow(COLUMN_ID)
+            ));
+            results.concat("date -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_DATE)
+            ));
+            results.concat("height -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_HEIGHT)
+            ));
+            results.concat("age -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_AGE)
+            ));
+            results.concat("gender -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_GENDER)
+            ));
+            results.concat("wrist -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_WEIGHT)
+            ));
+            results.concat("weight -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_WAIST)
+            ));
+            results.concat("wrist -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_WRIST)
+            ));
+            results.concat("hip -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_HIP)
+            ));
+            results.concat("forearm -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_FOREARM)
+            ));
+            results.concat("rbmr -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_RBMI)
+            ));
+            results.concat("rbmi -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_RBMR)
+            ));
+            results.concat("rbmr -> " + cursor.getLong(
+                    cursor.getColumnIndexOrThrow(COLUMN_RBFP)
+            ));*/
+
+            //System.out.println(results);
+
+           /* results.concat("userName -> " + cursor.getString(1));
             results.concat("date -> " + cursor.getString(2));
             results.concat("age -> " + cursor.getInt(3));
             results.concat("weight -> " + cursor.getDouble(4));
@@ -138,50 +218,83 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             results.concat("waist -> " + cursor.getDouble(7));
             results.concat("wrist -> " + cursor.getDouble(8));
             results.concat("forearm -> " + cursor.getDouble(9));*/
-            System.out.println("*** Count: " + cursor.getColumnCount() + "; content -> " +
-                    cursor.getString(0) + "; " +
-                    cursor.getString(1) + "; " +
-                    cursor.getString(2) + "; " +
-                    cursor.getString(3) + "; " +
-                    cursor.getString(4) + "; " );
 
+            /*values.put(COLUMN_ID, count);
+
+ values.put(COLUMN_ID, count);
+
+        values.put(COLUMN_UNAME, histogramObj.getUserName());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(histogramObj.getDate());
+        values.put(COLUMN_DATE, date);
+        values.put(COLUMN_AGE, histogramObj.getAge());
+        values.put(COLUMN_WEIGHT, histogramObj.getWeight());
+        values.put(COLUMN_HEIGHT, histogramObj.getHeight());
+        values.put(COLUMN_GENDER, histogramObj.getGender());
+        values.put(COLUMN_WAIST, histogramObj.getWaist());
+        values.put(COLUMN_WRIST, histogramObj.getWrist());
+        values.put(COLUMN_HIP, histogramObj.getHip());
+        values.put(COLUMN_FOREARM, histogramObj.getForearm());
+        values.put(COLUMN_RBMI,histogramObj.getRbmi());
+        values.put(COLUMN_RBMR,histogramObj.getRbmr());
+        values.put(COLUMN_RBFP,histogramObj.getRbfp());*/
+
+
+            aux.setUserName(cursor.getString(1));
+            //aux.setDate(format.parse(cursor.getString(1)));
+            aux.setHeight(Double.parseDouble(cursor.getString(3)));
+            aux.setAge(Integer.parseInt(cursor.getString(4)));
+            aux.setGender(cursor.getString(5));
+            aux.setWeight(Double.parseDouble(cursor.getString(6)));
+            aux.setWaist(Double.parseDouble(cursor.getString(7)));
+            aux.setWrist(Double.parseDouble(cursor.getString(8)));
+            aux.setHip(Double.parseDouble(cursor.getString(9)));
+            aux.setForearm(Double.parseDouble(cursor.getString(10)));
+            aux.setRbmi(Double.parseDouble(cursor.getString(11)));
+            aux.setRbmr(Double.parseDouble(cursor.getString(12)));
+            aux.setRbfp(Double.parseDouble(cursor.getString(13)));
+
+            list.add(aux);
+
+            System.out.println("*** Count: " + cursor.getColumnCount() + "; content -> " +
+                     "id: " + cursor.getString(0) + "; " +
+                     "userName: " +cursor.getString(1) + "; " +
+                     "date: " +cursor.getString(2) + "; " +
+                     "height: " +cursor.getString(3) + "; " +
+                     "age: " +cursor.getString(4) + "; " +
+                     "gender: " +cursor.getString(5) + "; " +
+                     "weight: " +cursor.getString(6) + "; " +
+                     "waist: " +cursor.getString(7) + "; " +
+                     "wrist: " +cursor.getString(8) + "; " +
+                     "hip: " +cursor.getString(9) + "; " +
+                     "forearm: " +cursor.getString(10) + "; " +
+                     "rbmi: " +cursor.getString(11) + "; " +
+                     "rbmr: " +cursor.getString(12) + "; " +
+                     "rbfp: " +cursor.getString(13) + "; "
+            );
+            /*values.put(COLUMN_DATE, date);
+            values.put(COLUMN_AGE, histogramObj.getAge());
+            values.put(COLUMN_WEIGHT, histogramObj.getWeight());
+            values.put(COLUMN_HEIGHT, histogramObj.getHeight());
+            values.put(COLUMN_GENDER, histogramObj.getGender());
+            values.put(COLUMN_WAIST, histogramObj.getWaist());
+            values.put(COLUMN_WRIST, histogramObj.getWrist());
+            values.put(COLUMN_HIP, histogramObj.getHip());
+            values.put(COLUMN_FOREARM, histogramObj.getForearm());
+            values.put(COLUMN_RBMI,histogramObj.getRbmi());
+            values.put(COLUMN_RBMR,histogramObj.getRbmr());
+            values.put(COLUMN_RBFP,histogramObj.getRbfp());*/
             cursor.moveToNext();
             /*HistogramObject histogramAux =
             Comment comment = cursorToComment(cursor);
             comments.add(comment);
             cursor.moveToNext();*/
         }
-            HistogramObject test = new HistogramObject();
+            //HistogramObject test = new HistogramObject();
 
-        return test;
+        return list;
     }
 
-    /*values.put(COLUMN_ID, count);
-
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    String date = sdf.format(histogramObj.getDate());
-
-    values.put(COLUMN_DATE, date);
-    values.put(COLUMN_AGE, histogramObj.getAge());
-    values.put(COLUMN_WEIGHT, histogramObj.getWeight());
-    values.put(COLUMN_HEIGHT, histogramObj.getHeight());
-    values.put(COLUMN_GENDER, Character.toString(histogramObj.getGender()));
-    values.put(COLUMN_WAIST, histogramObj.getWaist());
-    values.put(COLUMN_WRIST, histogramObj.getWrist());
-    values.put(COLUMN_FOREARM, histogramObj.getForearm());*/
-
-    //Cursor c = db.rawQuery("SELECT * FROM tbl1 WHERE name = '"+name+"'", null);
-
-
-    /*private Comment cursorToHistogram(Cursor cursor) {
-        HistogramObject histogramObj = new HistogramObject();
-
-        histogramObj.set
-        Comment comment = new Comment();
-        comment.setId(cursor.getLong(0));
-        comment.setComment(cursor.getString(1));
-        return comment;
-    }*/
 
 
     public void insertContact(Contact c){
@@ -229,8 +342,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        System.out.println("**Upgrading database");
         String query = "DROP TABLE IF EXISTS "+ TABLE_NAME;
+        String query2 = "DROP TABLE IF EXISTS "+ HISTOGRAM_TABLE_NAME;
         db.execSQL(query);
+        db.execSQL(query2);
         this.onCreate(db);
     }
 }
