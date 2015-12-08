@@ -11,6 +11,7 @@ import org.w3c.dom.Comment;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -118,7 +119,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<HistogramObject> getAll(String userName)
     {
-        List <HistogramObject> list = null;
+
+        List <HistogramObject> list = new ArrayList<HistogramObject>();
         //List<HistogramObject> comments = new ArrayList<HistogramObject>();
         db = this.getReadableDatabase();
         /*String[] projection = {
@@ -145,7 +147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-            HistogramObject aux = new HistogramObject();
+
 
 
            /* String name = cursor.getString(cursor
@@ -239,9 +241,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_RBMR,histogramObj.getRbmr());
         values.put(COLUMN_RBFP,histogramObj.getRbfp());*/
 
+            HistogramObject aux = new HistogramObject();
 
             aux.setUserName(cursor.getString(1));
             //aux.setDate(format.parse(cursor.getString(1)));
+            aux.setDate(new Date());
             aux.setHeight(Double.parseDouble(cursor.getString(3)));
             aux.setAge(Integer.parseInt(cursor.getString(4)));
             aux.setGender(cursor.getString(5));
