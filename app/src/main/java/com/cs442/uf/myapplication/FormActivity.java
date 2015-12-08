@@ -8,8 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class FormActivity extends AppCompatActivity {
+
+    private static RadioGroup radioGender;
+    private static RadioButton radioB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,30 +27,70 @@ public class FormActivity extends AppCompatActivity {
         bSubform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Radio button stuff
+                radioGender = (RadioGroup) findViewById(R.id.rg);
+                int choice_id=radioGender.getCheckedRadioButtonId();
+                radioB = (RadioButton)findViewById(choice_id);
+                String GenderChoice = radioB.getText().toString();
                 //store all the data in a variable
                 EditText heightField = (EditText) findViewById(R.id.eHeight);
                 String heightS = heightField.getText().toString();
-                int height = Integer.parseInt(heightS);
+                Double height = Double.parseDouble(heightS);
                 EditText weightField = (EditText) findViewById(R.id.eWeight);
                 String weightS = weightField.getText().toString();
-                int weight = Integer.parseInt(weightS);
+                Double weight = Double.parseDouble(weightS);
                 EditText ageField = (EditText) findViewById(R.id.eAge);
-                String ageS = heightField.getText().toString();
-                int age = Integer.parseInt(ageS);
+                String ageS = ageField.getText().toString();
+                Double age = Double.parseDouble(ageS);
                 EditText waistField = (EditText) findViewById(R.id.eWaistC);
-                String waistS = heightField.getText().toString();
-                int waist = Integer.parseInt(waistS);
+                String waistS = waistField.getText().toString();
+                Double waist = Double.parseDouble(waistS);
                 EditText wristField = (EditText) findViewById(R.id.eWristC);
-                String wristS = heightField.getText().toString();
-                int wrist = Integer.parseInt(wristS);
+                String wristS = wristField.getText().toString();
+                Double wrist = Double.parseDouble(wristS);
                 EditText hipField = (EditText) findViewById(R.id.eHipC);
-                String hipS = heightField.getText().toString();
-                int hip = Integer.parseInt(hipS);
+                String hipS = hipField.getText().toString();
+                Double hip = Double.parseDouble(hipS);
                 EditText forearmField = (EditText) findViewById(R.id.eForearmC);
-                String forearmS = heightField.getText().toString();
-                int forearm = Integer.parseInt(forearmS);
+                String forearmS = forearmField.getText().toString();
+                Double forearm = Double.parseDouble(forearmS);
                 //BMI Calc
-                double bmi = (weight/2.20462)/((height/100)^2);
+                double bmi = (weight/2.20462)/((height/100)*(height/100));
+
+                double bmr = 0;
+                double bfp = 0;
+                double bodyfatweight;
+                double leanbodymass;
+                double factor1,factor2,factor3,factor4,factor5;
+
+                if(GenderChoice == "Male")
+                {
+                    //BMR Calc
+                    bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+                    //BFP Calc
+                    factor1= (weight*1.082)+94.42;
+                    factor2= (waist)*4.15;
+                    leanbodymass=factor1-factor2;
+                    bodyfatweight=weight-leanbodymass;
+                    bfp=(bodyfatweight*100)/weight;
+                }
+
+                else // Female
+                {
+                    //BMR Calc
+                    bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+                    //BFP Calc
+                    factor1 = (weight * 0.782) + 8.987;
+                    factor2 = (wrist) / 3.140;
+                    factor3 = (waist) * 0.157;
+                    factor4 = (hip) * 0.249;
+                    factor5 = (forearm) * 0.434;
+                    leanbodymass = factor1 + factor2 - factor3 - factor4 + factor5;
+                    bodyfatweight = weight - leanbodymass;
+                    bfp = (bodyfatweight * 100) / weight;
+                }
+
+
 
 
                 Intent result = new Intent(FormActivity.this,resultActivity.class);
