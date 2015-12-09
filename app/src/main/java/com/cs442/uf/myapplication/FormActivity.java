@@ -25,7 +25,7 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
-        final DatabaseHelper databaseHelper;
+        final DatabaseHelper databaseHelper = null;
 
         Button bSubform = (Button) findViewById(R.id.bSubform);
         bSubform.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +101,7 @@ public class FormActivity extends AppCompatActivity {
                 //make a data object
                 HistogramObject obj = new HistogramObject(contact.getName(),dateobj,weight,height,age,GenderChoice,waist,wrist,hip,forearm,bmi,bmr,bfp);
                 //insert the data object to the database
-                //databaseHelper.insertInHistogram(obj);
+                databaseHelper.insertInHistogram(obj);
 
 
                 Intent result = new Intent(FormActivity.this,resultActivity.class);

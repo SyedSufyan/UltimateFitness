@@ -35,6 +35,17 @@ public class Display extends Activity {
         final Button buttonVit = (Button) findViewById(R.id.button_vitals);
         buttonVit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                //general
+                Intent act = new Intent(Display.this,FormActivity.class);
+                startActivity(act);
+
+
+                //if the date difference is more than 7 days
+
+                //else if less than 7 days
+
+
                 // Perform action on click
             }
         });
@@ -42,8 +53,8 @@ public class Display extends Activity {
         final Button buttonStep = (Button) findViewById(R.id.button_steps);
         buttonStep.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),StepsCounter.class);
-                startActivity(intent);
+               // Intent intent = new Intent(v.getContext(),StepsCounter.class);
+                //startActivity(intent);
             }
         });
 
