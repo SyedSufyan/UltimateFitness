@@ -94,12 +94,12 @@ public class FormActivity extends AppCompatActivity {
                     bfp = (bodyfatweight * 100) / weight;
                 }
 
-                Contact contact=new Contact();
+
                 DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
                 Date dateobj = new Date();
 
                 //make a data object
-                HistogramObject obj = new HistogramObject(contact.getName(),dateobj,weight,height,age,GenderChoice,waist,wrist,hip,forearm,bmi,bmr,bfp);
+                HistogramObject obj = new HistogramObject("test",dateobj,weight,height,age,GenderChoice,waist,wrist,hip,forearm,bmi,bmr,bfp);
                 //insert the data object to the database
                 databaseHelper.insertInHistogram(obj);
 
