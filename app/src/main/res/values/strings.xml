@@ -8,4 +8,5 @@
     <string name="button_stopwatch">Stop Watch</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_result">resultActivity</string>
+    <string name="title_activity_step_counter">StepCounter</string>
 </resources>

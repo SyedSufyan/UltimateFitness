@@ -3,6 +3,8 @@
     package="com.cs442.uf.myapplication" >
 
     <uses-permission android:name="com.example.vinayreddy.myapplication.permission.SET_ALARM" />
+    <uses-feature android:name="android.hardware.sensor.stepcounter" />
+    <uses-feature android:name="android.hardware.sensor.stepdetector" />
 
     <application
         android:allowBackup="true"
@@ -33,6 +35,15 @@
         <activity
             android:name=".resultActivity"
             android:label="@string/title_activity_result" >
+        </activity>
+        <activity
+            android:name=".StepCounter"
+            android:label="@string/title_activity_step_counter" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

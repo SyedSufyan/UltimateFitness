@@ -53,8 +53,8 @@ public class Display extends Activity {
         final Button buttonStep = (Button) findViewById(R.id.button_steps);
         buttonStep.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               // Intent intent = new Intent(v.getContext(),StepsCounter.class);
-                //startActivity(intent);
+                Intent intent = new Intent(v.getContext(),StepCounter.class);
+                startActivity(intent);
             }
         });
 
