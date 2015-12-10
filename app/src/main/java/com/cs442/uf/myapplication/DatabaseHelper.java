@@ -21,7 +21,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "fitness.db";
     private static final String TABLE_NAME = "contacts";
     private static final String HISTOGRAM_TABLE_NAME = "histogram";

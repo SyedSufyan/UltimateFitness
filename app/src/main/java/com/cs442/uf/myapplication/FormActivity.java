@@ -13,19 +13,21 @@ import android.widget.RadioGroup;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class FormActivity extends AppCompatActivity {
 
     private static RadioGroup radioGender;
     private static RadioButton radioB;
+    DatabaseHelper databaseHelper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
-        final DatabaseHelper databaseHelper = null;
 
         Button bSubform = (Button) findViewById(R.id.bSubform);
         bSubform.setOnClickListener(new View.OnClickListener() {
@@ -39,25 +41,25 @@ public class FormActivity extends AppCompatActivity {
                 //store all the data in a variable
                 EditText heightField = (EditText) findViewById(R.id.eHeight);
                 String heightS = heightField.getText().toString();
-                Double height = Double.parseDouble(heightS);
+                double height = Double.parseDouble(heightS);
                 EditText weightField = (EditText) findViewById(R.id.eWeight);
                 String weightS = weightField.getText().toString();
-                Double weight = Double.parseDouble(weightS);
+                double weight = Double.parseDouble(weightS);
                 EditText ageField = (EditText) findViewById(R.id.eAge);
                 String ageS = ageField.getText().toString();
                 int age =Integer.parseInt(ageS);
                 EditText waistField = (EditText) findViewById(R.id.eWaistC);
                 String waistS = waistField.getText().toString();
-                Double waist = Double.parseDouble(waistS);
+                double waist = Double.parseDouble(waistS);
                 EditText wristField = (EditText) findViewById(R.id.eWristC);
                 String wristS = wristField.getText().toString();
-                Double wrist = Double.parseDouble(wristS);
+                double wrist = Double.parseDouble(wristS);
                 EditText hipField = (EditText) findViewById(R.id.eHipC);
                 String hipS = hipField.getText().toString();
-                Double hip = Double.parseDouble(hipS);
+                double hip = Double.parseDouble(hipS);
                 EditText forearmField = (EditText) findViewById(R.id.eForearmC);
                 String forearmS = forearmField.getText().toString();
-                Double forearm = Double.parseDouble(forearmS);
+                double forearm = Double.parseDouble(forearmS);
                 //BMI Calc
                 double bmi = (weight/2.20462)/((height/100)*(height/100));
 
@@ -103,7 +105,15 @@ public class FormActivity extends AppCompatActivity {
                 //insert the data object to the database
                 databaseHelper.insertInHistogram(obj);
 
+                List<HistogramObject> list = new ArrayList<HistogramObject>();
 
+                list = databaseHelper.getAll("test");
+                System.out.println("**First value is: " + list.get(0).getRbmi());
+
+                for (HistogramObject auxObj : list)
+                {
+                    System.out.println("**Value RBMI is: " + auxObj.getRbmi());
+                }
                 Intent result = new Intent(FormActivity.this,resultActivity.class);
                 startActivity(result);
 
